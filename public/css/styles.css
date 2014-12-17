@@ -21,11 +21,16 @@ h1 {
 	color: #fff;
 	font-weight: 100;
 	margin-left: 10px;
+	border-bottom: 2px solid #fff;
+	margin-right: 600px;
 }
 
 h2 {
 	color: #fff;
 	margin-left: 10px;
+	border-bottom: 2px solid #fff;
+	margin-right: 400px;
+	padding-bottom: 2px;
 }
 
 .left {
@@ -38,7 +43,6 @@ h2 {
 	margin-top: 80px;
 	border-radius: 10px;
 	margin-left: 5px;
-
 }
 
 #neighborhood {
@@ -59,6 +63,13 @@ h2 {
 	padding: 10px; 
 }
 
+.drop:first-letter {
+	line-height: 50px;
+	font-size: 60px;
+	color: #ca6c2c;
+	float: left;
+}
+
 .right {
 	float: right;
 	width: 35%;
@@ -76,12 +87,16 @@ h2 {
 	margin: 10px;
 }
 
+.right a{
+	border-bottom: 2px solid #ccc;
+	/*box-sizing: border-box;*/
+}
+
 footer {
 	clear: both;
 	padding: 6px;
 	height: 80px;
 	color: #fff;
-	border: 2px solid black;
 	border-radius: 10px;
 	text-align: center;
 }
@@ -97,6 +112,10 @@ body {
 
 a {
 	text-decoration: none;
+}
+
+a:hover {
+	color: #ca6c2c;
 }
 
 .clearfix:after{

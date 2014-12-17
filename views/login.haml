@@ -1,12 +1,16 @@
-%h1 Login
+
+%html{ :style => "background: #3b679e" }
+
+
+%h1{ :style => "color: #fff"} Login
 %form{:action => "/login", :method => "post"}
   .field
     .label
-      %label{:for => "user_email'"} Email
+      %label{:style => "color: #fff", :for => "user_email'"} Email
     %input{:id => "user_email", :name => "email", :size => 30, :type => "text"}
   .field
     .label
-      %label{:for => "user_password"} Password
+      %label{:style => "color: #fff", :for => "user_password"} Password
     %input{:id => "user_password", :name => "password", :size => 30, :type => "password"}
   .buttons
     %input{:value => "Login", :type => "submit"}

@@ -9,6 +9,8 @@ require 'sinatra/simple-authentication'
 
 require_relative './models/user'
 require_relative './config/environments'
+require_relative './models/neighborhood'
+require_relative './models/post'
 
 register Sinatra::SimpleAuthentication
 
@@ -36,25 +38,53 @@ end
 
 get '/' do
 	login_required
-	redirect '/main_page'
 	#erb :index
+	redirect '/main_page'
 end
 
-get 'main_page' do
+
+
+get '/main_page' do
 	erb :main_page
 end
 
-get '/adams_morgan'
-	erb :adams_morgan_form
+get '/neighborhoods/:neighborhood_id' do
+	@posts = Post.where(neighborhood_id: params[:neighborhood_id])
+	erb :adams_morgan	
 end
 
-post 'adams_morgan_form'
-	erb :
+
+post '/neighborhoods/:neighborhood_id' do
+	@user_id = current_user.id
+	@post_title = params[:title]
+	@post_description = params[:description]
+	@neighborhood_id = Neighborhood.find(params[:neighborhood_id]).id
+
+	@post = Post.new(title: @post_title, body: @post_description, user_id: @user_id, neighborhood_id: @neighborhood_id)
 
 
-get '/new_thing/:thing' do
-	@whatever_we_want = params[:thing]
-	erb :someview
+	if @post.save
+		redirect '/neighborhoods/:neighborhood_id'
+	else
+		@post_errors = @post.errors.full_messages
+		puts @post_errors
+	end
+	
 end
+
+
+
+# get '/adams_morgan'
+# 	erb :adams_morgan_form
+# end
+
+# post 'adams_morgan_form'
+# 	erb :
+# end
+
+# get '/new_thing/:thing' do
+# 	@whatever_we_want = params[:thing]
+# 	erb :someview
+# end
 
 

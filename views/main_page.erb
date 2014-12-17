@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>DC Dish | Your Guide to the Real District</title>
+	  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+	  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	  <meta charset = 'utf-8'>
+	</head>
+
+	<body>
+		<div class="box">
+	  <%#= We use flash[:notice] and flash[:error] to display one-time messages to the user. Something like "Successfully logged in!" or "Could not log in :(" would go in these %>
+	  <%# if flash[:notice] %>
+	    <%#= flash[:notice] %>
+	  <%# end %>
+
+	  <%# if flash[:error] %>
+	    <%#= flash[:error] %>
+	  <%# end %>
+		<header>
+		<nav class="clearfix">
+			<div id="logout">
+				<a href='/logout'>Logout |</a>
+				<a href='/main_page'>Home |</a>
+				<%= current_user.email %>
+			</div>
+			<div id="name">
+				<h1>DC Dish</h1>
+				<h2>Your Guide to the Real District</h2>
+			</div>
+		</nav>
+		</header>
+		<div class="left">
+			<div id="neighborhood">
+			</div>
+			<div>
+			<p class="drop">Meh food truck four dollar toast McSweeney's 8-bit Carles taxidermy, tattooed PBR pork belly biodiesel. Slow-carb Banksy Odd Future trust fund, food truck cold-pressed selfies 3 wolf moon Godard flannel salvia authentic forage chia fashion axe. Jean shorts Vice distillery, single-origin coffee meditation kogi keytar bicycle rights scenester dreamcatcher sartorial. Flexitarian Neutra selfies irony scenester. Butcher post-ironic kitsch, Intelligentsia seitan Helvetica Truffaut. Artisan semiotics hashtag Godard, +1 yr leggings bespoke Echo Park irony. Cred cornhole YOLO gentrify, pug cold-pressed deep v cray mustache mumblecore food truck meh.</p>
+			</div>
+		</div>
+
+		<div class="right">
+			<h3>Neighborhoods</h3>
+	 		<ul>
+	 			<li><a href="/adams_morgan">Adams Morgan</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">U Street</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">Petworth</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">Shaw</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">Dupont Circle</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">Georgetown</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">Chinatown</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">Columbia Heights</a></li>
+	 			<li><a href="/neighbors/:neighborhood_id">H Street</a></li>
+	 		</ul>
+		</div>
+
+		<footer>
+			<a href="#">Twitter</a>
+			<a href="#">Facebook</a>
+			<a href="#">Instagram</a>
+			<a href="#">Contact Us</a>
+			<p>© Kadar Hall Inc. all rights reserved.</p>
+		</footer>
+		</div>
+	</body>
+</html>
