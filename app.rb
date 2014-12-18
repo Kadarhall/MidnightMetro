@@ -8,12 +8,13 @@ require 'sinatra/simple-authentication'
 #require 'rack-flash'
 
 
+
 require_relative './models/user'
 require_relative './config/environments'
 require_relative './models/neighborhood'
 require_relative './models/post'
 
-register Sinatra::SimpleAuthentication
+
 
 #use Rack::Flash, :sweep => true
 
@@ -35,7 +36,7 @@ Sinatra::SimpleAuthentication.configure do |c|
 	c.login_successful_message = "Custom Login successful"
 end
 
-
+register Sinatra::SimpleAuthentication
 
 get '/' do
 	login_required
