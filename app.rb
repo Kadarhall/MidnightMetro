@@ -7,6 +7,7 @@ require 'sinatra/simple-authentication'
 #require './models/user'
 #require 'rack-flash'
 
+
 require_relative './models/user'
 require_relative './config/environments'
 require_relative './models/neighborhood'
@@ -45,26 +46,29 @@ end
 
 
 get '/main_page' do
+	@all_neighborhoods = Neighborhood.all
 	erb :main_page
 end
 
-get '/neighborhoods/:neighborhood_id' do
-	@posts = Post.where(neighborhood_id: params[:neighborhood_id])
-	erb :adams_morgan	
-end
+# get '/neighborhoods/:neighborhood_id' do
+# 	@posts = Post.where(neighborhood_id: params[:neighborhood_id])
+# 	erb :neighborhoods	
+# end
 
 
-post '/neighborhoods/:neighborhood_id' do
+post '/new_form' do
 	@user_id = current_user.id
 	@post_title = params[:title]
-	@post_description = params[:description]
-	@neighborhood_id = Neighborhood.find(params[:neighborhood_id]).id
+	@post_description = params[:body]
+	@neighborhood_id = params[:neighborhood_id]
 
 	@post = Post.new(title: @post_title, body: @post_description, user_id: @user_id, neighborhood_id: @neighborhood_id)
+	@post.save
 
 
 	if @post.save
-		redirect '/neighborhoods/:neighborhood_id'
+		redirect "/neighborhoods/#{@neighborhood_id}/posts"
+		erb :template
 	else
 		@post_errors = @post.errors.full_messages
 		puts @post_errors
@@ -73,6 +77,17 @@ post '/neighborhoods/:neighborhood_id' do
 end
 
 
+get '/neighborhoods/:neighborhood_id/posts' do
+	@neighborhood_title = params[:title]
+	@neighborhood = Neighborhood.find(params[:neighborhood_id])
+	@neighborhood_id = params[:neighborhood_id]
+	@all_posts = Post.where(neighborhood_id: params[:neighborhood_id])
+	erb :template
+end
+
+get '/new_form' do
+	erb :template
+end
 
 # get '/adams_morgan'
 # 	erb :adams_morgan_form
@@ -87,4 +102,17 @@ end
 # 	erb :someview
 # end
 
+get '/delete/:post_id' do
+	@post = Post.find(params[:post_id])
+	@post_id = @post.id
+	erb :delete
+end
 
+get '/delete/:post_id/delete' do
+	@post = Post.find(params[:post_id])
+	@post_id = @post.id
+	@neighborhood_id = @post.neighborhood.id
+	puts @post.title
+	@post.destroy
+	redirect '/'
+end

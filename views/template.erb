@@ -1,0 +1,28 @@
+<%= erb :new_form %>
+
+<h1><%= @neighborhood.title %></h1>
+<ul>
+
+	<div id="logout">
+			<a href='/logout'>Logout |</a>
+			<a href='/main_page'>Home |</a>
+			<%= current_user.email %>
+	</div>
+
+
+	<% @all_posts.each do |comment| %>
+	<h2><%= comment.title %></h2>
+	<li><%= comment.body %></li>
+	<li><a href='/delete/<%=comment.id%>'>Delete</a></li>
+	<% end %>
+	
+</ul>
+
+
+<footer>
+		<a href="#">Twitter</a>
+		<a href="#">Facebook</a>
+		<a href="#">Instagram</a>
+		<a href="#">Contact Us</a>
+		<p>© Kadar Hall Inc. all rights reserved.</p>
+</footer>

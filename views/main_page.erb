@@ -40,8 +40,15 @@
 
 		<div class="right">
 			<h3>Neighborhoods</h3>
-	 		<ul>
-	 			<li><a href="/adams_morgan">Adams Morgan</a></li>
+
+			<ul>
+			<% @all_neighborhoods.each do |neighborhood| %>
+				<li><a href="/neighborhoods/<%= neighborhood.id %>/posts" ><%= neighborhood.title %></a></li>
+			<% end %>
+			</ul>
+
+	 		<!-- <ul>
+	 			<li><a href="/">Adams Morgan</a></li>
 	 			<li><a href="/neighbors/:neighborhood_id">U Street</a></li>
 	 			<li><a href="/neighbors/:neighborhood_id">Petworth</a></li>
 	 			<li><a href="/neighbors/:neighborhood_id">Shaw</a></li>
@@ -50,7 +57,7 @@
 	 			<li><a href="/neighbors/:neighborhood_id">Chinatown</a></li>
 	 			<li><a href="/neighbors/:neighborhood_id">Columbia Heights</a></li>
 	 			<li><a href="/neighbors/:neighborhood_id">H Street</a></li>
-	 		</ul>
+	 		</ul> -->
 		</div>
 
 		<footer>
