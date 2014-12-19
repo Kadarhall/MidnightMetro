@@ -1,6 +1,6 @@
 <%= erb :new_form %>
 
-<h1><%= @neighborhood.title %></h1>
+<h1 style="color: #ca6c2c"><%= @neighborhood.title %></h1>
 <ul>
 
 	<div id="logout">
@@ -12,8 +12,9 @@
 
 	<% @all_posts.each do |comment| %>
 	<h2><%= comment.title %></h2>
-	<li><%= comment.body %></li>
-	<li><a href='/delete/<%=comment.id%>'>Delete</a></li>
+	<h4><li style="color: #fff"><%= comment.body %></li></h4>
+	<a href='/delete/<%=comment.id%>' style="color: #fff">Delete Post   |   </a>
+	<a href='#' style="color: #fff">Edit Post</a>
 	<% end %>
 	
 </ul>

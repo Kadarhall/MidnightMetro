@@ -1,18 +1,19 @@
 <form action="<%= @actionUrl %>" method="post" enctype="multipart/form-data">
-  
-  <label for="email">Email:</label>
+
+  <label for="email" style="color: #fff">Email:</label>
   <input type="text" name="email" class="text" value="<%= @user[:email] %>">
-  
-  <label for="password">Password:</label>
+
+
+  <label for="password" style="color: #fff">Password:</label>
   <input type="password" name="password" class="text" value="<%= @user[:password] %>">
-  
+
   <% if @password_confirmation %>
-  
-  <label for="password_confirmation">Password confirmation:</label>
+
+  <label for="password_confirmation" style="color: #fff">Password confirmation:</label>
   <input type="password" name="password_confirmation" class="text">
-  
+
   <% end %>
-  
+
   <input type="submit" value="Send" class="button">
-  
+
 </form>
